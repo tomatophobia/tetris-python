@@ -18,12 +18,12 @@ def draw_star(x, y, char="*"):
     console.addstr(x, y, char)
     console.refresh()
 
-draw_board(10, 10)  # draw a board
-time.sleep(1)  # wait a second
-draw_star(6, 6)  # draw our star
-time.sleep(1)  # wait a second
-draw_star(6, 6, " ")  # clear the star
-draw_star(3, 3)  # place the star on another position
-time.sleep(3)  # wait a few seconds
-
-curses.endwin()  # return control back to the console
+if __name__ == "__main__":
+    draw_board(10, 10)  # draw a board
+    time.sleep(1)  # wait a second
+    draw_star(6, 1)  # draw our star
+    time.sleep(1)  # wait a second
+    draw_star(6, 1, " ")  # clear the star
+    draw_star(3, 3)  # place the star on another position
+    time.sleep(3)  # wait a few seconds
+    curses.endwin()  # return control back to the console
