@@ -1,27 +1,41 @@
 from draw import draw_board, draw_star
 import time
 import curses
+import keyboard
 
-width = 10
+width = 30 
 height = 10
 draw_board(width , height)  # draw a board
 time.sleep(1)  # wait a second
-s_p = 5
-for i in range(1, height - 1):
-    draw_star(i , s_p)
-    draw_star(i , s_p + 1)
-    draw_star(i + 1, s_p + 1)
-    draw_star(i + 1, s_p + 2)
+star_y = 15
+star_x = 0
+
+def keyhandler(e):
+    global star_y
+    global star_x
+    if(e.name == "right"):
+        draw_star(star_x, star_y, " ")
+        star_y += 1
+        draw_star(star_x, star_y)
+    elif(e.name == "left"):
+        draw_star(star_x, star_y, " ")
+        star_y -= 1
+        draw_star(star_x, star_y)
+    elif(e.name == "down"):
+        draw_star(star_x, star_y, " ")
+        star_x +=1
+        draw_star(star_x, star_y)
+    elif(e.name == "z"):
+        pass
+    elif(e.name == "x"):
+        pass       
+
+keyboard.hook(keyhandler)
+
+while(star_x < height - 1):
+    star_x += 1
+    draw_star(star_x, star_y)
     time.sleep(1)
-    draw_star(i , s_p , " ")
-    draw_star(i , s_p + 1 , " ")
-    draw_star(i + 1, s_p + 1 , " ")
-    draw_star(i + 1 , s_p + 2 , " ")
-
-    
-
-
-
-
+    draw_star(star_x , star_y, " ")
 
 curses.endwin()  # return control back to the console
