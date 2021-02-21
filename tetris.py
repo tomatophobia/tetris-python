@@ -6,10 +6,13 @@ import keyboard
 width = 30 
 height = 10
 speed = 0.75
+y_start = 15
+x_start = 1
 draw_board(width , height)  # draw a board
 time.sleep(1)  # wait a second
-star_y = 15
-star_x = 0
+star_y = y_start
+star_x = x_start
+state = [[0]*width for i in range(height)]
 
 def keyhandler(e):
     global star_y
@@ -31,16 +34,30 @@ def keyhandler(e):
     elif(e.name == "x"):
         pass
     
-               
+                
 keyboard.hook(keyhandler)
 
-while(star_x < height - 1):
-    star_x += 1
+while(True):
+    while(star_x < height - 1):
+        draw_star(star_x, star_y)
+        
+
+        time.sleep(speed)
+        if(state[star_x + 1][star_y] == 1):
+            draw_star(star_x , star_y)
+            break
+        draw_star(star_x , star_y, " ")
+        star_x += 1
     draw_star(star_x, star_y)
-    time.sleep(speed)
-    draw_star(star_x , star_y, " ")
-    if(star_x == height - 1):
-        draw_star(height - 1, star_y)
+
+    state[star_x][star_y] = 1
+
+    star_y = y_start
+    star_x = x_start
+
+
+
+
 
 
 keyboard.wait('esc')
