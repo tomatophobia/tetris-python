@@ -14,9 +14,14 @@ def draw_board(width, height, charset="+-| "):
     console.addstr(height-1, 0, h_line)
     console.refresh()
 
-def draw_star(x, y, char="*"):
+def draw_star(x, y, state , char="*"):
     console.addstr(x, y, char)
     console.refresh()
+    if(char == " "):
+        state[x][y] = 0
+    else:
+        state[x][y] = 1
+    
 
 if __name__ == "__main__":
     draw_board(10, 10)  # draw a board
