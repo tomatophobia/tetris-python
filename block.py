@@ -258,27 +258,87 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
         # ㄱ
         if(revolve == 1):
             result = draw_star(x, y, state, char)
+            if(not result):
+                return False
             result = draw_star(x + 1, y, state, char)
+            if(not result):
+                draw_star(x, y, state, " ")
+                return False
             result = draw_star(x + 1, y + 1, state, char)
+            if(not result):
+                draw_star(x, y, state, " ")
+                draw_star(x + 1, y, state, " ")
+                return False
             result = draw_star(x + 1, y + 2, state, char)
+            if(not result):
+                draw_star(x, y, state, " ")
+                draw_star(x + 1, y, state, " ")
+                draw_star(x + 1, y + 1, state, " ")
+                return False
+            return True
 
         elif(revolve == 2):
             result = draw_star(x, y + 1, state, char)
+            if(not result):
+                return False
             result = draw_star(x + 1, y + 1, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                return False
             result = draw_star(x, y + 2, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                draw_star(x + 1, y + 1, state, " ")
+                return False
             result = draw_star(x + 2, y + 1, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                draw_star(x + 1, y + 1, state, " ")
+                draw_star(x, y + 2, state, " ")
+                return False
+            return True
 
         elif(revolve == 3):
             result = draw_star(x + 1, y, state, char)
+            if(not result):
+                return False
             result = draw_star(x + 1, y + 1, state, char)
+            if(not result):
+                draw_star(x + 1, y, state, " ")
+                return False
             result = draw_star(x + 1, y + 2, state, char)
+            if(not result):
+                draw_star(x + 1, y, state, " ")
+                draw_star(x + 1, y + 1, state, " ")   
+                return False
             result = draw_star(x + 2, y + 2, state, char)
+            if(not result):
+                draw_star(x + 1, y, state, " ")
+                draw_star(x + 1, y + 1, state, " ")   
+                draw_star(x + 1, y + 2, state, " ")
+                return False
+            return True
 
         elif(revolve == 4):
             result = draw_star(x, y + 1, state, char)
+            if(not result):
+                return False
             result = draw_star(x + 1, y + 1, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                return False
             result = draw_star(x + 2, y + 1, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                draw_star(x + 1, y + 1, state, " ")
+                return False
             result = draw_star(x + 2, y, state, char)
+            if(not result):
+                draw_star(x, y + 1, state, " ")
+                draw_star(x + 1, y + 1, state, " ")
+                draw_star(x + 2, y + 1, state, " ")
+                return False
+            return True
         else:
             raise RuntimeError('회전 에러') from exc
 
