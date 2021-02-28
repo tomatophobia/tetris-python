@@ -15,12 +15,19 @@ def draw_board(width, height, charset="+-| "):
     console.refresh()
 
 def draw_star(x, y, state , char="*"):
-    console.addstr(x, y, char)
-    console.refresh()
     if(char == " "):
         state[x][y] = 0
     else:
+        if(state[x][y] == 1):
+           return False 
         state[x][y] = 1
+        
+
+    console.addstr(x, y, char)
+    console.refresh()
+    return True
+
+    
     
 
 if __name__ == "__main__":
