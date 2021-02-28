@@ -227,6 +227,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 draw_star(x + 1, y, state, " ")
                 draw_star(x + 1, y + 1, state, " ")
                 return False
+            return True
 
         elif(revolve == 2):
             result = draw_star(x, y + 1, state, char)
@@ -247,6 +248,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 draw_star(x + 1, y + 1, state, " ")
                 draw_star(x, y + 2, state, " ")
                 return False
+            return True
 
         elif(revolve == 3):
             result = draw_star(x + 1, y, state, char)
@@ -267,6 +269,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 draw_star(x + 1, y + 1, state, " ")   
                 draw_star(x + 1, y + 2, state, " ")
                 return False
+            return True
 
         elif(revolve == 4):
             result = draw_star(x, y + 1, state, char)
