@@ -89,7 +89,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
             return True
 
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 2):
         # 사각형
@@ -116,7 +116,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
 
 
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 3):
         # 2 번개
@@ -205,7 +205,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
             return True
 
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 4):
         # 5 번개
@@ -294,7 +294,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
             return True
 
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 5):
         # ㅗ
@@ -383,7 +383,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
             return True
 
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 6):
         # L
@@ -471,7 +471,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 return False
             return True
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     elif(pattern == 7):
         # ㄱ
@@ -559,7 +559,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 return False
             return True
         else:
-            raise RuntimeError('회전 에러') from exc
+            raise RuntimeError('회전 에러')
 
     else:
-        raise RuntimeError('블럭 에러') from exc
+        raise RuntimeError('블럭 에러')
