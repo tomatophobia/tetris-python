@@ -4,7 +4,7 @@ from draw import draw_star
 def draw_block(x, y, revolve, pattern, state, char="*"):
     if(pattern == 1):
         # 막대기
-        if(revolve == 1):
+        if(revolve == 1 or revolve == 3):
             result = draw_star(x + 1, y, state, char)            
             if(not result):
                 return False
@@ -25,7 +25,7 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 return False
             return True
 
-        elif(revolve == 2):
+        elif(revolve == 2 or revolve == 4):
             result = draw_star(x, y + 2, state, char)
             if(not result):
                 return False
@@ -43,48 +43,6 @@ def draw_block(x, y, revolve, pattern, state, char="*"):
                 draw_star(x, y + 2, state, " ")
                 draw_star(x + 1, y + 2, state, " ")
                 draw_star(x + 2, y + 2, state, " ")
-                return False
-            return True
-
-        elif(revolve == 3):
-            result = draw_star(x + 2, y, state, char)
-            if(not result):
-                return False
-            result = draw_star(x + 2, y + 1, state, char)
-            if(not result):
-                draw_star(x + 2, y, state, " ")
-                return False
-            result = draw_star(x + 2, y + 2, state, char)
-            if(not result):
-                draw_star(x + 2, y, state, " ")
-                draw_star(x + 2, y + 1, state, " ")
-                return False
-            result = draw_star(x + 2, y + 3, state, char)
-            if(not result):
-                draw_star(x + 2, y, state, " ")
-                draw_star(x + 2, y + 1, state, " ")
-                draw_star(x + 2, y + 2, state, " ")
-                return False
-            return True
-
-        elif(revolve == 4):
-            result = draw_star(x, y + 1, state, char)
-            if(not result):
-                return False
-            result = draw_star(x + 1, y + 1, state, char)
-            if(not result):
-                draw_star(x, y + 1, state, " ")
-                return False
-            result = draw_star(x + 2, y + 1, state, char)
-            if(not result):
-                draw_star(x, y + 1, state, " ")
-                draw_star(x + 1, y + 1, state, " ")
-                return False
-            result = draw_star(x + 3, y + 1, state, char)
-            if(not result):
-                draw_star(x, y + 1, state, " ")
-                draw_star(x + 1, y + 1, state, " ")
-                draw_star(x + 2, y + 1, state, " ")
                 return False
             return True
 

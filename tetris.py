@@ -15,7 +15,9 @@ time.sleep(1)  # wait a second
 star_y = y_start
 star_x = x_start
 revolve = 1
-pattern = random.randint(1,7)
+# pattern = random.randint(1,7)
+pattern = 7
+floor = height - 2
 state = [[0]*width for i in range(height)]
 
 
@@ -38,16 +40,45 @@ def keyhandler(e):
         star_x += 1
         draw_block(star_x, star_y, revolve, pattern, state)
     elif(e.name == "z"):
-        pass
+        draw_block(star_x, star_y, revolve, pattern, state,  " ")
+        revolve += 1
+        if(revolve > 4):
+            revolve %= 4
+        change_floor(pattern, revolve)
+        draw_block(star_x, star_y, revolve, pattern, state)
     elif(e.name == "x"):
-        pass
+        draw_block(star_x, star_y, revolve, pattern, state,  " ")
+        revolve += 3
+        if(revolve > 4):
+            revolve %= 4
+        change_floor(pattern, revolve)
+        draw_block(star_x, star_y, revolve, pattern, state)
 
 
-keyboard.hook(keyhandler)
+def change_floor(pattern, revolve):
+    global floor
+    if(pattern == 1 and (revolve == 2 or revolve == 4)):
+        floor = height - 4
+    elif(pattern == 3 and (revolve == 2 or revolve == 4)):
+        floor = height - 3
+    elif(pattern == 4 and (revolve == 2 or revolve == 4)):
+        floor = height - 3
+    elif(pattern == 5 and (revolve == 2 or revolve == 3 or revolve == 4)):
+        floor = height - 3
+    elif(pattern == 6 and (revolve == 2 or revolve == 3 or revolve == 4)):
+        floor = height - 3
+    elif(pattern == 7 and (revolve == 2 or revolve == 3 or revolve == 4)):
+        floor = height - 3        
+    else:
+        floor = height - 2
+
+
+keyboard.on_press(keyhandler)
 
 while(True):
     draw_block(star_x, star_y, revolve, pattern, state)
-    while(star_x < height - 2):
+    change_floor(pattern, revolve)
+    while(star_x < floor):
         time.sleep(speed)
         draw_block(star_x, star_y, revolve, pattern, state, " ")
         star_x += 1
@@ -58,7 +89,8 @@ while(True):
 
     star_y = y_start
     star_x = x_start
-    pattern = random.randint(1,7)
+    revolve = 1
+    # pattern = random.randint(1, 7)
 
 
 keyboard.wait('esc')
