@@ -1,7 +1,7 @@
 from draw import draw_star
 
 
-def draw_block(x, y, revolve, pattern, state, char="*"):
+def draw_block(x, y, revolve, pattern, state, char="x"):
     if(pattern == 1):
         # 막대기
         if(revolve == 1 or revolve == 3):

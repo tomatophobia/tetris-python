@@ -4,7 +4,7 @@ import time
 console = curses.initscr()  # initialize is our playground
 
 # this can be more streamlined but it's enough for demonstration purposes...
-def draw_board(width, height, charset="+-| "):
+def draw_board(width, height, charset="+^| "):
     h_line = charset[0] + charset[1] * (width - 2) + charset[0]
     v_line = charset[2] + charset[3] * (width - 2) + charset[2]
     console.clear()
@@ -14,7 +14,7 @@ def draw_board(width, height, charset="+-| "):
     console.addstr(height-1, 0, h_line)
     console.refresh()
 
-def draw_star(x, y, state , char="*"):
+def draw_star(x, y, state , char="x"):
     if(char == " "):
         state[x][y] = 0
     else:
