@@ -20,7 +20,6 @@ pattern = 2
 floor = height - 2
 state = [[0]*width for i in range(height)]
 
-
 def keyhandler(e):
     global star_y
     global star_x
@@ -30,29 +29,35 @@ def keyhandler(e):
     if(e.name == "right"):
         draw_block(star_x, star_y, revolve, pattern, state, " ")
         star_y += 1
-        draw_block(star_x, star_y, revolve, pattern, state)
+        success = draw_block(star_x, star_y, revolve, pattern, state)
+        if(not success):
+            star_y -= 1
     elif(e.name == "left"):
         draw_block(star_x, star_y, revolve, pattern, state, " ")
         star_y -= 1
-        draw_block(star_x, star_y, revolve, pattern, state)
+        success = draw_block(star_x, star_y, revolve, pattern, state)
+        if(not success):
+            star_y -= 1
     elif(e.name == "down"):
         draw_block(star_x, star_y, revolve, pattern, state,  " ")
         star_x += 1
-        draw_block(star_x, star_y, revolve, pattern, state)
+        success = draw_block(star_x, star_y, revolve, pattern, state)
+        if(not success):
+            star_x -= 1
     elif(e.name == "z"):
         draw_block(star_x, star_y, revolve, pattern, state,  " ")
         revolve += 1
         if(revolve > 4):
             revolve %= 4
         change_floor(pattern, revolve)
-        draw_block(star_x, star_y, revolve, pattern, state)
+        success = draw_block(star_x, star_y, revolve, pattern, state)
     elif(e.name == "x"):
         draw_block(star_x, star_y, revolve, pattern, state,  " ")
         revolve += 3
         if(revolve > 4):
             revolve %= 4
         change_floor(pattern, revolve)
-        draw_block(star_x, star_y, revolve, pattern, state)
+        success = draw_block(star_x, star_y, revolve, pattern, state)
 
 
 def change_floor(pattern, revolve):
